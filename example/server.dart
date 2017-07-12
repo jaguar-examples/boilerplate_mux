@@ -2,14 +2,15 @@
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
 import 'package:jaguar/jaguar.dart';
-import 'package:jaguar_mux/jaguar_mux.dart';
 
 main() async {
-  final muxer = new MuxBuilder();
+  final server = new Jaguar();
 
-  muxer.get('/api/version', (Context ctx) => 0.1);
+  // Get version route
+  server.get('/api/version', (Context ctx) => 0.1);
 
-  muxer.get(
+  // Get info route
+  server.get(
       '/api/info',
       (Context ctx) => Response.json({
             'name': 'jaguar',
@@ -17,10 +18,21 @@ main() async {
             'degree of awesomeness': 'infinity!',
           }));
 
-  Mux mux = muxer.build();
+  // Shows show to decode JSON body from the request
+  server.post('/api/math', (Context ctx) async {
+    /// [bodyAsJsonMap] method on [Request] object can be used to decode JSON
+    /// body of the request into Dart built-in object
+    final Map body = await ctx.req.bodyAsJsonMap();
+    final int a = body['a'];
+    final int b = body['b'];
 
-  Jaguar configuration = new Jaguar();
-  configuration.addApi(mux);
+    return Response.json({
+      'addition': a + b,
+      'subtraction': a - b,
+      'multiplication': a * b,
+      'division': a ~/ b,
+    });
+  });
 
-  await configuration.serve();
+  await server.serve();
 }

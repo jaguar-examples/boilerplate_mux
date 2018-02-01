@@ -1,18 +1,3 @@
-# boilerplate_mux
-
-Boilerplate for jaguar_mux.
-
-Contains a server built with Jaguar. It exposes four routes for demonstration
-purposes:
-
-1. A simple GET route
-2. A simple POST route that uses query parameters
-3. A simple JSON GET route
-4. A simple JSON POST route that has JSON body
-
-It also includes a sample client to test these APIs.
-
-```dart
 /// A simple example showing how to add routes to Jaguar. Also shows how to
 /// use serve JSON responses.
 import 'package:jaguar/jaguar.dart';
@@ -43,4 +28,3 @@ main() async {
 
   await server.serve();
 }
-```

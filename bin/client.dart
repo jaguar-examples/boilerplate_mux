@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 const String kHostname = 'localhost';
 
-const int kPort = 8080;
+const int kPort = 10000;
 
 final http.Client _client = new http.Client();
 
@@ -22,20 +22,27 @@ Future<Null> execVersion() async {
   printHttpClientResponse(resp);
 }
 
+Future<Null> execAdd() async {
+  http.Response resp = await _client.post(
+      new Uri.http('$kHostname:$kPort', '/api/add', {'a': '5', 'b': '20'}));
+  await printHttpClientResponse(resp);
+}
+
 Future<Null> execInfo() async {
   String url = "http://$kHostname:$kPort/api/info";
   http.Response resp = await _client.get(url);
   printHttpClientResponse(resp);
 }
 
-Future<Null> execMath() async {
-  String url = "http://$kHostname:$kPort/api/math";
+Future<Null> execSubtract() async {
+  String url = "http://$kHostname:$kPort/api/sub";
   http.Response resp = await _client.post(url, body: '{"a": 10, "b": 5}');
   await printHttpClientResponse(resp);
 }
 
 main() async {
   await execVersion();
+  await execAdd();
   await execInfo();
-  await execMath();
+  await execSubtract();
 }

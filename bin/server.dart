@@ -20,11 +20,5 @@ main() async {
             'motto': 'Simple. Fast. Flexible. Extensible.',
           });
 
-  // A simple post JSON route
-  server.postJson('/api/sub', (Context ctx) async {
-    Map body = await ctx.req.bodyAsJsonMap();
-    return {'result': body['a'] - body['b']};
-  });
-
   await server.serve();
 }

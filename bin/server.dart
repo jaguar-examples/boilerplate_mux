@@ -20,5 +20,7 @@ main() async {
             'motto': 'Simple. Fast. Flexible. Extensible.',
           });
 
-  await server.serve();
+  server.log.onRecord.listen(print);
+
+  await server.serve(logRequests: true);
 }

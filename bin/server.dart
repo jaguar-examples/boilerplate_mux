@@ -3,7 +3,7 @@
 import 'package:jaguar/jaguar.dart';
 
 main() async {
-  final server = new Jaguar(port: 10000);
+  final server = Jaguar(port: 10000);
 
   // A simple get route
   server.get('/api/version', (_) => 0.1);

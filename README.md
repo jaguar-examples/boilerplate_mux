@@ -1,6 +1,6 @@
 # boilerplate_mux
 
-Boilerplate for jaguar_mux.
+Boilerplate application for Jaguar with a sample HTTP server using mux.
 
 Contains a server built with Jaguar. It exposes four routes for demonstration
 purposes:

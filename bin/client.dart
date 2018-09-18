@@ -15,7 +15,7 @@ Future<Null> execVersion() async {
 
 Future<Null> execAdd() async {
   print(await resty
-      .post('$base//api/add')
+      .post('$base/api/add')
       .query('a', '5')
       .query('b', '20')
       .go()

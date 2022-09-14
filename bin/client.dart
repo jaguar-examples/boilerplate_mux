@@ -2,7 +2,7 @@ library jaguar.boilerplate.client;
 
 import 'dart:io';
 import 'dart:async';
-import 'package:http/http.dart' as http;
+import 'package:http/io_client.dart';
 import 'package:jaguar_resty/jaguar_resty.dart' as resty;
 
 const String base = 'http://localhost:10000';
@@ -27,7 +27,7 @@ Future<Null> execInfo() async {
 }
 
 main() async {
-  resty.globalClient = http.IOClient();
+  resty.globalClient = IOClient();
 
   await execVersion();
   await execAdd();
